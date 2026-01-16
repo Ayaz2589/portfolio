@@ -3,8 +3,6 @@ export { default as Intro } from "./intro";
 export { default as SectionDivder } from "./section-divider";
 export { default as AboutMe } from "./about-me";
 export { default as SectionHeading } from "./section-heading";
-export { default as Projects } from "./projects";
-export { default as Project } from "./projects/project";
 export { default as Skills } from "./skills";
 export { default as Experience } from "./experience";
 export { default as Contact } from "./contact";
