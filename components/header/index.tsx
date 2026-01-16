@@ -31,9 +31,19 @@ export default function Header() {
                   },
                 )}
                 href={link.hash}
-                onClick={() => {
+                onClick={(event) => {
+                  event.preventDefault();
                   setActiveSection(link.name);
                   setTimeOfLastClick(Date.now());
+                  const target = document.querySelector(link.hash);
+                  if (!target) return;
+                  const rect = target.getBoundingClientRect();
+                  const targetTop = rect.top + window.scrollY;
+                  const offset = window.innerHeight / 2 - rect.height / 2;
+                  window.scrollTo({
+                    top: targetTop - offset,
+                    behavior: "smooth",
+                  });
                 }}
               >
                 {link.name}
