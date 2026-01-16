@@ -13,3 +13,4 @@ export { default as SubmitBtn } from "./submit-btn";
 export { default as Footer } from "./footer";
 export { default as UserExperience } from "./uxui";
 export { default as Card } from "./card";
+export { default as GlassButton } from "./glass-button";
