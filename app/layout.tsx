@@ -19,8 +19,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="!scroll-smooth">
-      <body className={`${inter.className} bg-gray-50 text-gray-950 relative`}>
-        <BackgroundAnimation />
+      <body
+        className={`${inter.className} relative bg-gray-50 bg-gradient-to-b from-blue-100 via-blue-50 to-blue-200 text-gray-950`}
+      >
+        {/* <BackgroundAnimation /> */}
         <ActiveSectionContextProvider>
           <Header />
           {children}
