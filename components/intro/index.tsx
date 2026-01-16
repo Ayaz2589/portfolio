@@ -1,7 +1,8 @@
 "use client";
 
-import React from "react";
+import React, { useRef } from "react";
 import Image from "next/image";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { BsArrowRight, BsLinkedin } from "react-icons/bs";
 import { HiDownload } from "react-icons/hi";
 import { FaGithubSquare } from "react-icons/fa";
@@ -10,11 +11,35 @@ import { GlassButton, RoundGlassButton } from "@/components";
 
 export default function Intro() {
   const { setActiveSection, setTimeOfLastClick } = useActiveSection();
-  const { ref } = useSectionInView({ sectionName: "Home" });
+  const { ref: sectionRef } = useSectionInView({ sectionName: "Home" });
+
+  const divRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: divRef,
+    offset: ["start start", "end start"],
+  });
+
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+  const opacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 0.9]);
 
   return (
-    <section ref={ref} className="scroll-mt-28 text-center" id="home">
-      <div className="w-full max-w-[50rem] px-4">
+    <section
+      ref={(node) => {
+        if (node) {
+          // @ts-ignore
+          sectionRef(node);
+          // @ts-ignore
+          divRef.current = node;
+        }
+      }}
+      className="relative flex h-screen w-full snap-start snap-always items-center justify-center text-center"
+      id="home"
+    >
+      <motion.div
+        style={{ y, opacity, scale }}
+        className="w-full max-w-[50rem] px-4"
+      >
         <div className="flex flex-col items-center">
           <Image
             src="/picture.png"
@@ -67,7 +92,7 @@ export default function Intro() {
             <FaGithubSquare />
           </RoundGlassButton>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }

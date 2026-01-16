@@ -37,13 +37,7 @@ export default function Header() {
                   setTimeOfLastClick(Date.now());
                   const target = document.querySelector(link.hash);
                   if (!target) return;
-                  const rect = target.getBoundingClientRect();
-                  const targetTop = rect.top + window.scrollY;
-                  const offset = window.innerHeight / 2 - rect.height / 2;
-                  window.scrollTo({
-                    top: targetTop - offset,
-                    behavior: "smooth",
-                  });
+                  target.scrollIntoView({ behavior: "smooth" });
                 }}
               >
                 {link.name}
