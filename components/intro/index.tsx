@@ -33,7 +33,7 @@ export default function Intro() {
           divRef.current = node;
         }
       }}
-      className="relative flex h-screen w-full snap-start snap-always items-center justify-center text-center"
+      className="relative flex h-screen w-full items-center justify-center text-center"
       id="home"
     >
       <motion.div

@@ -31,7 +31,7 @@ export default function AboutMe() {
         }
       }}
       id="about"
-      className="flex h-screen w-full snap-start snap-always items-center justify-start px-4 scroll-mt-28 sm:px-12"
+      className="flex h-screen w-full items-center justify-start px-4 scroll-mt-28 sm:px-12"
     >
       <motion.div style={{ opacity, y }} className="w-full max-w-6xl">
         <GlassCard className="max-w-[42rem] text-left leading-7 sm:leading-8">
