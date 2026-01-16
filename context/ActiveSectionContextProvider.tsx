@@ -5,6 +5,7 @@ import { links } from "@/lib";
 
 export type ActiveSectionType =
   | "Home"
+  | "About"
   | "Experience"
   | "UX/UI"
   | "Contact"
