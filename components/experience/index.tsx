@@ -21,7 +21,10 @@ const leftAlign =
 const rightAlign = "flex justify-between items-center w-full right-timeline";
 
 export default function Experience() {
-  const { ref } = useSectionInView({ sectionName: "Experience" });
+  const { ref } = useSectionInView({
+    sectionName: "Experience",
+    threshold: 0.2,
+  });
   return (
     <section
       ref={ref}
