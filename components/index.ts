@@ -13,3 +13,4 @@ export { default as UserExperience } from "./uxui";
 export { default as Card } from "./card";
 export { default as GlassButton } from "./glass-button";
 export { default as RoundGlassButton } from "./round-glass-button";
+export { default as GlassCard } from "./glass-card";
