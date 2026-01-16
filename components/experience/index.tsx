@@ -4,16 +4,6 @@ import React from "react";
 import { SectionHeading } from "@/components";
 import { useSectionInView } from "@/hooks";
 import { experiencesData } from "@/lib";
-import { motion } from "framer-motion";
-
-const fadeInAnimation = {
-  initial: { opacity: 0, y: 100 },
-  animate: (index: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { delay: 0.05 * index },
-  }),
-};
 
 const leftAlign =
   "mb-0 flex justify-between flex-row-reverse items-center w-full left-timeline";
@@ -39,17 +29,12 @@ export default function Experience() {
             style={{ left: "49.9%" }}
           ></div>
           {experiencesData.map((data, index) => (
-            <motion.div
+            <div
               key={index}
               className={index % 2 === 0 ? leftAlign : rightAlign}
-              variants={fadeInAnimation}
-              initial="initial"
-              whileInView="animate"
-              viewport={{ once: true }}
-              custom={index}
             >
               <TimelineCard value={data} />
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

@@ -2,7 +2,6 @@
 
 import React from "react";
 import { SectionHeading, SubmitBtn } from "@/components";
-import { motion } from "framer-motion";
 import { useSectionInView } from "@/hooks";
 import { sendEmail } from "@/server";
 import toast from "react-hot-toast";
@@ -11,22 +10,10 @@ export default function Contact() {
   const { ref } = useSectionInView({ sectionName: "Contact" });
 
   return (
-    <motion.section
+    <section
       id="contact"
       ref={ref}
       className="mb-20 sm:mb-28 w-[min(100%,38rem)] text-center scroll-mt-28 pt-[5rem]"
-      initial={{
-        opacity: 0,
-      }}
-      whileInView={{
-        opacity: 1,
-      }}
-      transition={{
-        duration: 1,
-      }}
-      viewport={{
-        once: true,
-      }}
     >
       <SectionHeading>Contact me</SectionHeading>
 
@@ -68,6 +55,6 @@ export default function Contact() {
         />
         <SubmitBtn />
       </form>
-    </motion.section>
+    </section>
   );
 }

@@ -2,19 +2,15 @@
 
 import React from "react";
 import { Card, SectionHeading } from "@/components";
-import { motion } from "framer-motion";
 import { useSectionInView } from "@/hooks";
 
 export default function AboutMe() {
   const { ref } = useSectionInView({ sectionName: "About", threshold: 0.75 });
 
   return (
-    <motion.section
+    <section
       ref={ref}
       className="mb-28 max-w-[45rem] scroll-mt-28 text-center leading-8 sm:mb-40 sm:leading-10"
-      initial={{ opacity: 0, y: 100 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.175 }}
       id="about"
     >
       <Card>
@@ -41,6 +37,6 @@ export default function AboutMe() {
           well as client side application components and flows.
         </p>
       </Card>
-    </motion.section>
+    </section>
   );
 }
