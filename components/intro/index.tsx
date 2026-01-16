@@ -6,7 +6,7 @@ import { BsArrowRight, BsLinkedin } from "react-icons/bs";
 import { HiDownload } from "react-icons/hi";
 import { FaGithubSquare } from "react-icons/fa";
 import { useSectionInView, useActiveSection } from "@/hooks";
-import { GlassButton } from "@/components";
+import { GlassButton, RoundGlassButton } from "@/components";
 
 export default function Intro() {
   const { setActiveSection, setTimeOfLastClick } = useActiveSection();
@@ -54,24 +54,24 @@ export default function Intro() {
           Download CV{" "}
           <HiDownload className="opacity-60 group-hover:translate-y-1 transition" />
         </GlassButton>
-        <GlassButton
+        <RoundGlassButton
           as="a"
           href="https://www.linkedin.com/in/ayaz2589/"
           target="_blank"
-          className="h-12 w-12 p-0 text-gray-700 hover:text-gray-950"
+          className="text-gray-700 hover:text-gray-950"
           aria-label="LinkedIn"
         >
           <BsLinkedin />
-        </GlassButton>
-        <GlassButton
+        </RoundGlassButton>
+        <RoundGlassButton
           as="a"
           href="https://github.com/Ayaz2589"
           target="_blank"
-          className="h-12 w-12 p-0 text-[1.35rem] text-gray-700 hover:text-gray-950"
+          className="text-[1.35rem] text-gray-700 hover:text-gray-950"
           aria-label="GitHub"
         >
           <FaGithubSquare />
-        </GlassButton>
+        </RoundGlassButton>
       </div>
     </section>
   );
