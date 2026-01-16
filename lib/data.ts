@@ -7,18 +7,18 @@ export const links = [
     name: "Home",
     hash: "#home",
   },
-  {
-    name: "Experience",
-    hash: "#experience",
-  },
-  {
-    name: "UX/UI",
-    hash: "#uxui",
-  },
-  {
-    name: "Contact",
-    hash: "#contact",
-  },
+  // {
+  //   name: "Experience",
+  //   hash: "#experience",
+  // },
+  // {
+  //   name: "UX/UI",
+  //   hash: "#uxui",
+  // },
+  // {
+  //   name: "Contact",
+  //   hash: "#contact",
+  // },
 ] as const;
 
 export const experiencesData = [

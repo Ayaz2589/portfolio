@@ -3,7 +3,12 @@
 import React, { useEffect, useRef, useState, createContext } from "react";
 import { links } from "@/lib";
 
-export type ActiveSectionType = (typeof links)[number]["name"] | null;
+export type ActiveSectionType =
+  | "Home"
+  | "Experience"
+  | "UX/UI"
+  | "Contact"
+  | null;
 
 type ActiveSectionContextType = {
   activeSection: ActiveSectionType;
