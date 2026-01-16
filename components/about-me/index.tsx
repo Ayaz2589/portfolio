@@ -8,11 +8,7 @@ export default function AboutMe() {
   const { ref } = useSectionInView({ sectionName: "About", threshold: 0.5 });
 
   return (
-    <section
-      ref={ref}
-      id="about"
-      className="flex min-h-screen w-full scroll-mt-28 items-center justify-start px-4 sm:px-12"
-    >
+    <section ref={ref} id="about" className="scroll-mt-28 px-4 sm:px-12">
       <div className="w-full max-w-6xl">
         <GlassCard className="max-w-[42rem] text-left leading-7 sm:leading-8">
           <SectionHeading>About me</SectionHeading>

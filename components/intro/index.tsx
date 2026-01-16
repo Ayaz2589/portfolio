@@ -13,11 +13,7 @@ export default function Intro() {
   const { ref } = useSectionInView({ sectionName: "Home" });
 
   return (
-    <section
-      ref={ref}
-      className="flex h-screen w-full items-center justify-center text-center md:-translate-y-8"
-      id="home"
-    >
+    <section ref={ref} className="scroll-mt-28 text-center" id="home">
       <div className="w-full max-w-[50rem] px-4">
         <div className="flex flex-col items-center">
           <Image
