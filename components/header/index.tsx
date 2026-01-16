@@ -12,11 +12,11 @@ export default function Header() {
   return (
     <header className="relative z-[999]">
       <div
-        className="pointer-events-none fixed left-1/2 top-0 h-[4.5rem] w-full -translate-x-1/2 rounded-none border border-white border-opacity-40 bg-white bg-opacity-60 shadow-lg shadow-black/[0.03] backdrop-blur-[0.3rem] dark:bg-opacity-75 sm:top-6 sm:h-[3.25rem] sm:w-[41rem] sm:rounded-full"
+        className="pointer-events-none fixed left-1/2 top-0 h-[4.5rem] w-full -translate-x-1/2 rounded-none border border-white/40 bg-white/30 shadow-[0_8px_30px_rgba(31,41,55,0.12)] backdrop-blur-md dark:border-white/20 dark:bg-white/10 sm:top-6 sm:h-[3.25rem] sm:w-[41rem] sm:rounded-full"
         aria-hidden="true"
       ></div>
       <nav className="fixed left-1/2 top-[0.15rem] z-[1000] flex h-12 -translate-x-1/2 py-2 sm:top-[1.7rem] sm:h-[initial] sm:py-0">
-        <ul className="flex w-[22rem] flex-wrap items-center justify-center gap-y-1 text-[0.9rem] font-medium text-gray-500 sm:w-[initial] sm:flex-nowrap sm:gap-5">
+        <ul className="flex w-[22rem] flex-wrap items-center justify-center gap-y-1 text-[0.9rem] font-medium text-gray-600 dark:text-gray-200 sm:w-[initial] sm:flex-nowrap sm:gap-5">
           {links.map((link) => (
             <li
               key={link.hash}
@@ -24,8 +24,11 @@ export default function Header() {
             >
               <Link
                 className={clsx(
-                  "flex w-full items-center justify-center px-3 py-3 transition hover:text-gray-950",
-                  { "text-gray-950": activeSection === link.name },
+                  "flex w-full items-center justify-center px-3 py-2 transition hover:text-gray-950 dark:hover:text-white",
+                  {
+                    "text-gray-950 dark:text-white":
+                      activeSection === link.name,
+                  },
                 )}
                 href={link.hash}
                 onClick={() => {
@@ -35,7 +38,7 @@ export default function Header() {
               >
                 {link.name}
                 {link.name === activeSection && (
-                  <span className="absolute inset-0 -z-10 rounded-full bg-gray-200"></span>
+                  <span className="dark:bg-white/15 absolute inset-0 -z-10 rounded-full border border-white/40 bg-white/40 backdrop-blur-sm dark:border-white/20"></span>
                 )}
               </Link>
             </li>
