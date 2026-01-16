@@ -9,12 +9,8 @@ import {
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between pt-24 backdrop-blur-md md:p-24">
+    <main className="flex min-h-screen flex-col items-center backdrop-blur-md">
       <Intro />
-      {/* <Experience />
-      <UserExperience />
-      <Contact />
-      <Footer /> */}
     </main>
   );
 }
