@@ -8,10 +8,6 @@ export const links = [
     hash: "#home",
   },
   {
-    name: "About",
-    hash: "#about",
-  },
-  {
     name: "Experience",
     hash: "#experience",
   },
