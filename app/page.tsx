@@ -2,7 +2,6 @@ import {
   Intro,
   SectionDivder,
   AboutMe,
-  Skills,
   Experience,
   Contact,
   Footer,
@@ -15,7 +14,6 @@ export default function Home() {
       <Intro />
       <AboutMe />
       {/* <Projects /> */}
-      <Skills />
       <Experience />
       <UserExperience />
       <Contact />
