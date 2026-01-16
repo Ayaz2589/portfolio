@@ -18,11 +18,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="h-full overflow-x-hidden scroll-smooth">
-      <body
-        className={`${inter.className} relative bg-gray-50 bg-gradient-to-b from-blue-100 via-blue-50 to-blue-200 text-gray-950`}
-      >
-        {/* <BackgroundAnimation /> */}
+    <html lang="en" className="!scroll-smooth">
+      <body className={`${inter.className} relative`}>
+        <BackgroundAnimation />
         <ActiveSectionContextProvider>
           <Header />
           {children}
