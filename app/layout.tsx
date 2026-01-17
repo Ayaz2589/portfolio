@@ -8,8 +8,8 @@ import { Toaster } from "react-hot-toast";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Ayaz's Portfolio",
-  description: "Ayaz's Portfolio",
+  title: "Tasnuva's Portfolio",
+  description: "Tasnuva's Portfolio",
 };
 
 export default function RootLayout({
