@@ -15,8 +15,8 @@ export default function Header() {
         className="pointer-events-none fixed left-1/2 top-0 h-[4.5rem] w-full -translate-x-1/2 rounded-none border border-white/40 bg-white/30 shadow-[0_8px_30px_rgba(31,41,55,0.12)] backdrop-blur-md dark:border-white/20 dark:bg-white/10 sm:top-6 sm:h-[3.25rem] sm:w-[41rem] sm:rounded-full"
         aria-hidden="true"
       ></div>
-      <nav className="fixed left-1/2 top-[0.15rem] z-[1000] flex h-12 -translate-x-1/2 py-2 sm:top-[1.7rem] sm:h-[initial] sm:py-0">
-        <ul className="flex w-[22rem] flex-wrap items-center justify-center gap-y-1 text-[0.9rem] font-medium text-gray-600 dark:text-gray-200 sm:w-[initial] sm:flex-nowrap sm:gap-5">
+      <nav className="fixed left-1/2 top-0 z-[1000] flex h-[4.5rem] -translate-x-1/2 items-center justify-center sm:top-6 sm:h-[3.25rem]">
+        <ul className="flex h-full w-[22rem] flex-wrap items-center justify-center gap-y-1 text-[0.9rem] font-medium text-gray-600 dark:text-gray-200 sm:w-[initial] sm:flex-nowrap sm:gap-5">
           {links.map((link) => (
             <li
               key={link.hash}
@@ -24,7 +24,7 @@ export default function Header() {
             >
               <Link
                 className={clsx(
-                  "flex w-full items-center justify-center px-3 py-2 transition hover:text-gray-950 dark:hover:text-white",
+                  "flex h-full w-full items-center justify-center px-3 py-2 transition hover:text-gray-950 dark:hover:text-white",
                   {
                     "text-gray-950 dark:text-white":
                       activeSection === link.name,

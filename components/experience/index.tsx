@@ -1,9 +1,10 @@
 "use client";
 
 import React from "react";
-import { SectionHeading } from "@/components";
+import { SectionHeading, GlassCard } from "@/components";
 import { useSectionInView } from "@/hooks";
 import { experiencesData } from "@/lib";
+import { motion } from "framer-motion";
 
 const leftAlign =
   "mb-0 flex justify-between flex-row-reverse items-center w-full left-timeline";
@@ -19,22 +20,33 @@ export default function Experience() {
     <section
       ref={ref}
       id="experience"
-      className="text-center sm:mb-0 scroll-mt-28"
+      className="scroll-mt-28 text-center sm:mb-0"
     >
-      <SectionHeading>Experience</SectionHeading>
-      <div className="container mx-auto w-full h-full">
-        <div className="relative wrap overflow-hidden p-4 sm:p-10 h-full">
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true, amount: 0.2 }}
+      >
+        <SectionHeading>Experience</SectionHeading>
+      </motion.div>
+      <div className="container mx-auto h-full w-full">
+        <div className="wrap relative h-full overflow-hidden p-4 sm:p-10">
           <div
-            className="hidden sm:block absolute bg-gray-300 h-full w-1 rounded-full"
+            className="absolute hidden h-full w-1 rounded-full bg-white/30 sm:block"
             style={{ left: "49.9%" }}
           ></div>
           {experiencesData.map((data, index) => (
-            <div
+            <motion.div
               key={index}
+              initial={{ opacity: 0, x: index % 2 === 0 ? 50 : -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              viewport={{ once: true, amount: 0.5 }}
               className={index % 2 === 0 ? leftAlign : rightAlign}
             >
               <TimelineCard value={data} />
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
@@ -46,19 +58,23 @@ function TimelineCard({ value }: { value: any }) {
   return (
     <>
       <div className="order-1 hidden sm:block sm:w-5/12"></div>
-      <div className="z-20 items-center order-1 bg-gray-800 shadow-xl w-8 h-8 rounded-full hidden sm:flex">
-        <h1 className="mx-auto font-semibold text-lg text-white">
+      <div className="z-20 order-1 hidden h-10 w-10 items-center justify-center rounded-full border border-white/40 bg-white/30 shadow-xl backdrop-blur-md sm:flex">
+        <h1 className="mx-auto text-lg font-semibold text-white">
           {value.icon}
         </h1>
       </div>
-      <div className="w-full order-1 bg-white/70 rounded-xl sm:w-5/12 px-6 py-4 text-left min-h-[10rem] text-gray-600 mb-4 sm:mb-0 shadow-sm">
-        <h3 className="text-lg text-gray-800 font-semibold">{value.title}</h3>
-        <h4 className="text-sm text-gray-800 mb-2">{value.company}</h4>
-        <p className="text-xs">{value.location}</p>
-        <p className="text-xs">{value.date}</p>
-        <hr className="my-3 h-[1px] border-t-0 bg-gray-300 opacity-100 dark:opacity-50" />
-        <p className="text-sm py-3 leading-6">{value.description}</p>
-      </div>
+      <GlassCard className="order-1 mb-4 min-h-[10rem] w-full p-6 text-left text-white sm:mb-0 sm:w-5/12 sm:p-6">
+        <h3 className="text-lg font-bold text-white">{value.title}</h3>
+        <h4 className="mb-2 text-sm font-medium text-white/90">
+          {value.company}
+        </h4>
+        <p className="text-xs text-white/80">{value.location}</p>
+        <p className="text-xs text-white/80">{value.date}</p>
+        <hr className="my-3 h-[1px] border-t-0 bg-white/40 opacity-100" />
+        <p className="py-3 text-sm leading-6 text-white/90">
+          {value.description}
+        </p>
+      </GlassCard>
     </>
   );
 }

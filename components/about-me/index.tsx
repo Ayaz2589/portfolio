@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useRef } from "react";
-import { GlassCard, SectionHeading } from "@/components";
+import { SectionHeading } from "@/components";
 import { useSectionInView } from "@/hooks";
 import { motion, useScroll, useTransform } from "framer-motion";
 
@@ -10,15 +10,47 @@ export default function AboutMe() {
     sectionName: "About",
     threshold: 0.5,
   });
-  const containerRef = useRef<HTMLElement>(null);
 
+  const divRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "center center"],
+    target: divRef,
+    offset: ["start start", "end start"],
   });
 
-  const opacity = useTransform(scrollYProgress, [0, 1], [0, 1]);
-  const y = useTransform(scrollYProgress, [0, 1], ["20%", "0%"]);
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+  const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 0.6]);
+
+  const text =
+    "After graduating with a degree in Management Information Systems and taking web development courses at university, I decided to pursue my passion for programming and focus on full-stack web development. My favorite part of programming is the problem-solving aspect - I love the feeling of finally figuring out a solution to a challenging problem. My core stack includes React, Next.js, Node.js, and TypeScript. During my tenure as a programmer, I've had the opportunity to work on both large distributed teams and smaller startup teams. My experience includes building backend services such as large-scale identity systems, as well as developing client-side application components and user flows.";
+
+  const words = text.split(" ");
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.05,
+      },
+    },
+  };
+
+  const wordVariants = {
+    hidden: {
+      opacity: 0,
+      x: -20,
+    },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        type: "spring",
+        damping: 20,
+        stiffness: 100,
+      },
+    },
+  };
 
   return (
     <section
@@ -27,39 +59,42 @@ export default function AboutMe() {
           // @ts-ignore
           sectionRef(node);
           // @ts-ignore
-          containerRef.current = node;
+          divRef.current = node;
         }
       }}
       id="about"
-      className="flex h-screen w-full items-center justify-start px-4 scroll-mt-28 sm:px-12"
+      className="flex h-screen w-full items-center justify-center px-4 scroll-mt-28"
     >
-      <motion.div style={{ opacity, y }} className="w-full max-w-6xl">
-        <GlassCard className="max-w-[42rem] text-left leading-7 sm:leading-8">
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+        style={{ y, opacity, scale }}
+        className="w-full max-w-[60rem] text-center"
+      >
+        <motion.div
+          variants={{
+            hidden: { opacity: 0, y: 30 },
+            visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+          }}
+        >
           <SectionHeading>About me</SectionHeading>
-          <div className="text-gray-800 dark:text-white/80">
-            <p className="mb-4">
-              After graduating with a degree in{" "}
-              <span className="font-medium">Management Information Systems</span>{" "}
-              and taking web development courses at university, I decided to
-              pursue my passion for programming and focus on{" "}
-              <span className="font-medium">full-stack web development</span>.
-              My favorite part of programming is the problem-solving aspect - I
-              love the feeling of finally figuring out a solution to a
-              challenging problem. My core stack includes{" "}
-              <span className="font-medium">
-                React, Next.js, Node.js, and TypeScript
-              </span>
-              .
-            </p>
-            <p>
-              During my tenure as a programmer, I've had the opportunity to work
-              on both large distributed teams and smaller startup teams. My
-              experience includes building backend services such as large-scale
-              identity systems, as well as developing client-side application
-              components and user flows.
-            </p>
-          </div>
-        </GlassCard>
+        </motion.div>
+
+        <motion.div
+          variants={containerVariants}
+          className="flex flex-wrap justify-center text-lg leading-relaxed text-gray-50 md:text-2xl"
+        >
+          {words.map((word, index) => (
+            <motion.span
+              variants={wordVariants}
+              key={index}
+              className="mr-2 mb-2 inline-block"
+            >
+              {word}
+            </motion.span>
+          ))}
+        </motion.div>
       </motion.div>
     </section>
   );

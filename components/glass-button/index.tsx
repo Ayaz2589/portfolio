@@ -7,7 +7,7 @@ type GlassButtonProps =
 const baseClasses =
   "inline-flex items-center justify-center gap-2 rounded-full px-7 py-3 font-medium text-gray-900 " +
   "bg-white/25 backdrop-blur-md border border-white/40 shadow-[0_8px_30px_rgba(31,41,55,0.15)] " +
-  "transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow-lg hover:bg-white/35 " +
+  "transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-lg hover:bg-white/35 " +
   "active:translate-y-0 active:scale-[0.98] active:shadow-md focus-visible:outline-none " +
   "focus-visible:ring-2 focus-visible:ring-white/60 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent " +
   "dark:text-white dark:bg-white/10 dark:border-white/20 dark:hover:bg-white/20";

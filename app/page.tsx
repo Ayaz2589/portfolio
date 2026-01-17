@@ -1,18 +1,20 @@
 import {
   Intro,
-  SectionDivder,
+  SectionDivider,
   AboutMe,
+  Skills,
   Experience,
-  Contact,
   Footer,
-  UserExperience,
 } from "@/components";
 
 export default function Home() {
   return (
-    <main className="w-full">
+    <main className="flex w-full flex-col items-center">
       <Intro />
       <AboutMe />
+      <Skills />
+      <Experience />
+      <Footer />
     </main>
   );
 }

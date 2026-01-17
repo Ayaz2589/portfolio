@@ -11,18 +11,14 @@ export const links = [
     name: "About",
     hash: "#about",
   },
-  // {
-  //   name: "Experience",
-  //   hash: "#experience",
-  // },
-  // {
-  //   name: "UX/UI",
-  //   hash: "#uxui",
-  // },
-  // {
-  //   name: "Contact",
-  //   hash: "#contact",
-  // },
+  {
+    name: "Skills",
+    hash: "#skills",
+  },
+  {
+    name: "Experience",
+    hash: "#experience",
+  },
 ] as const;
 
 export const experiencesData = [
