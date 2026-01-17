@@ -40,7 +40,7 @@ export const experiencesData = [
     date: "Gratuated May 2014 B.S. in Management Information Systems",
   },
   {
-    title: "Jr. Frontend Web Developer",
+    title: "Jr. Web Developer",
     company: "Greensbury Market",
     location: "New York, NY",
     description:
@@ -49,7 +49,7 @@ export const experiencesData = [
     date: "June 2016 - March 2017",
   },
   {
-    title: "Frontend Web Developer",
+    title: "Web Developer",
     company: "The Bacon",
     location: "New York, NY",
     description:
@@ -58,7 +58,7 @@ export const experiencesData = [
     date: "April 2017 - October 2018",
   },
   {
-    title: "Frontend Software Engineer",
+    title: "Software Engineer",
     company: "Goldman Sachs",
     location: "New York, NY",
     description:
@@ -67,7 +67,7 @@ export const experiencesData = [
     date: "November 2018 - October 2020",
   },
   {
-    title: "Fullstack Software Engineer",
+    title: "Software Engineer",
     company: "K Health",
     location: "New York, NY",
     description:
@@ -85,13 +85,13 @@ export const experiencesData = [
     date: "May 2023",
   },
   {
-    title: "Senior Frontend Engineer",
-    company: "Cross Terra",
+    title: "Senior Software Engineer",
+    company: "Crossterra",
     location: "New York, NY",
     description:
-      "Developed a React-based questionnaire service to match users effectively with suitable physicians. PDevelop e-commerce storefronts and an admin dashboard with Next.js for brands entering the Asian market, collaborating with backend engineers, Product Manager, and Designer for optimal user experience and functionality.",
+      "Own the frontend architecture and development of multi-tenant applications, spanning consumer storefronts and internal admin dashboards.",
     icon: React.createElement(CgWorkAlt),
-    date: "March 2024 - Current",
+    date: "February 2024 - Current",
   },
 ] as const;
 
