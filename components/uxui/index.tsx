@@ -83,13 +83,13 @@ export default function UserExperience() {
 
         <motion.div
           variants={containerVariants}
-          className="flex flex-wrap justify-center text-lg leading-relaxed text-gray-50 md:text-2xl"
+          className="flex flex-wrap justify-center text-lg leading-snug text-gray-50 md:text-2xl md:leading-relaxed"
         >
           {words.map((word, index) => (
             <motion.span
               variants={wordVariants}
               key={index}
-              className="mr-2 mb-2 inline-block"
+              className="mr-1 mb-1 inline-block md:mr-2 md:mb-2"
             >
               {word}
             </motion.span>
