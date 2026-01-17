@@ -37,7 +37,26 @@ export default function Header() {
                   setTimeOfLastClick(Date.now());
                   const target = document.querySelector(link.hash);
                   if (!target) return;
-                  target.scrollIntoView({ behavior: "smooth" });
+
+                  if (link.name === "Experience") {
+                    target.scrollIntoView({
+                      behavior: "smooth",
+                      block: "start",
+                    });
+                  } else {
+                    const elementRect = target.getBoundingClientRect();
+                    const absoluteElementTop =
+                      elementRect.top + window.pageYOffset;
+                    const middle =
+                      absoluteElementTop -
+                      window.innerHeight / 2 +
+                      elementRect.height / 2;
+
+                    window.scrollTo({
+                      top: middle + 50,
+                      behavior: "smooth",
+                    });
+                  }
                 }}
               >
                 {link.name}

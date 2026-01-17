@@ -3,7 +3,9 @@ import {
   SectionDivider,
   AboutMe,
   Skills,
+  UserExperience,
   Experience,
+  Contact,
   Footer,
 } from "@/components";
 
@@ -13,7 +15,9 @@ export default function Home() {
       <Intro />
       <AboutMe />
       <Skills />
+      <UserExperience />
       <Experience />
+      <Contact />
       <Footer />
     </main>
   );

@@ -61,9 +61,25 @@ export default function Intro() {
           <GlassButton
             as="a"
             href="#contact"
-            onClick={() => {
+            onClick={(event) => {
+              event.preventDefault();
               setActiveSection("Contact");
               setTimeOfLastClick(Date.now());
+              const target = document.querySelector("#contact");
+              if (target) {
+                const elementRect = target.getBoundingClientRect();
+                const absoluteElementTop =
+                  elementRect.top + window.pageYOffset;
+                const middle =
+                  absoluteElementTop -
+                  window.innerHeight / 2 +
+                  elementRect.height / 2;
+
+                window.scrollTo({
+                  top: middle + 50,
+                  behavior: "smooth",
+                });
+              }
             }}
           >
             Contact me here{" "}

@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { SectionHeading, SubmitBtn } from "@/components";
+import { SectionHeading, SubmitBtn, GlassCard } from "@/components";
 import { useSectionInView } from "@/hooks";
 import { sendEmail } from "@/server";
 import toast from "react-hot-toast";
@@ -14,7 +14,7 @@ export default function Contact() {
     <motion.section
       id="contact"
       ref={ref}
-      className="mb-20 sm:mb-28 w-[min(100%,38rem)] text-center scroll-mt-28 pt-[5rem] mx-auto"
+      className="flex min-h-screen w-full flex-col items-center justify-center scroll-mt-28 px-4 text-center"
       initial={{
         opacity: 0,
       }}
@@ -28,46 +28,48 @@ export default function Contact() {
         once: true,
       }}
     >
-      <SectionHeading>Contact me</SectionHeading>
+      <GlassCard className="w-full max-w-[33rem] p-8 sm:p-12">
+        <SectionHeading>Contact me</SectionHeading>
 
-      <p className="text-gray-700 -mt-6 dark:text-white/80">
-        Please contact me directly at{" "}
-        <a className="underline" href="mailto:ayaz2589@gmail.com">
-          ayaz2589@gmail.com
-        </a>{" "}
-        or through this form.
-      </p>
+        <p className="text-gray-700 -mt-6 dark:text-white/80">
+          Please contact me directly at{" "}
+          <a className="underline" href="mailto:ayaz2589@gmail.com">
+            ayaz2589@gmail.com
+          </a>{" "}
+          or through this form.
+        </p>
 
-      <form
-        className="w-[95%] sm:w-full mt-10 flex flex-col dark:text-black mx-auto"
-        action={async (formData) => {
-          const { data, error } = await sendEmail(formData);
+        <form
+          className="mt-10 flex flex-col dark:text-black"
+          action={async (formData) => {
+            const { data, error } = await sendEmail(formData);
 
-          if (error) {
-            toast.error(error);
-            return;
-          }
+            if (error) {
+              toast.error(error);
+              return;
+            }
 
-          toast.success("Email sent successfully!");
-        }}
-      >
-        <input
-          className="h-14 px-4 rounded-xl borderBlack dark:bg-white dark:bg-opacity-80 dark:focus:bg-opacity-100 transition-all dark:outline-none"
-          name="senderEmail"
-          type="email"
-          required
-          maxLength={500}
-          placeholder="Your email"
-        />
-        <textarea
-          className="h-52 my-3 rounded-xl borderBlack p-4 dark:bg-white dark:bg-opacity-80 dark:focus:bg-opacity-100 transition-all dark:outline-none"
-          name="message"
-          placeholder="Your message"
-          required
-          maxLength={5000}
-        />
-        <SubmitBtn />
-      </form>
+            toast.success("Email sent successfully!");
+          }}
+        >
+          <input
+            className="h-14 w-full px-4 rounded-xl borderBlack dark:bg-white dark:bg-opacity-80 dark:focus:bg-opacity-100 transition-all dark:outline-none"
+            name="senderEmail"
+            type="email"
+            required
+            maxLength={500}
+            placeholder="Your email"
+          />
+          <textarea
+            className="h-52 w-full my-3 rounded-xl borderBlack p-4 dark:bg-white dark:bg-opacity-80 dark:focus:bg-opacity-100 transition-all dark:outline-none"
+            name="message"
+            placeholder="Your message"
+            required
+            maxLength={5000}
+          />
+          <SubmitBtn />
+        </form>
+      </GlassCard>
     </motion.section>
   );
 }
