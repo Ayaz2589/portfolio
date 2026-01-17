@@ -1,6 +1,6 @@
 import "./globals.css";
 import { Inter } from "next/font/google";
-import { Header } from "@/components";
+import { Header, MobileNav } from "@/components";
 import { ActiveSectionContextProvider } from "@/context";
 import { BackgroundAnimation } from "@/components";
 import { Toaster } from "react-hot-toast";
@@ -23,6 +23,7 @@ export default function RootLayout({
         <BackgroundAnimation />
         <ActiveSectionContextProvider>
           <Header />
+          <MobileNav />
           {children}
           <Toaster position="top-right" />
         </ActiveSectionContextProvider>

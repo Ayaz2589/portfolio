@@ -7,9 +7,10 @@ import { experiencesData } from "@/lib";
 import { motion } from "framer-motion";
 
 const leftAlign =
-  "mb-0 flex justify-between flex-row-reverse items-center w-full left-timeline";
+  "mb-8 flex flex-col sm:flex-row-reverse justify-between items-center w-full left-timeline";
 
-const rightAlign = "flex justify-between items-center w-full right-timeline";
+const rightAlign =
+  "mb-8 flex flex-col sm:flex-row justify-between items-center w-full right-timeline";
 
 export default function Experience() {
   const { ref } = useSectionInView({
@@ -43,7 +44,9 @@ export default function Experience() {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true, amount: 0.5 }}
-              className={index % 2 === 0 ? leftAlign : rightAlign}
+              className={`${
+                index % 2 === 0 ? leftAlign : rightAlign
+              } w-full px-4 sm:px-0`}
             >
               <TimelineCard value={data} />
             </motion.div>

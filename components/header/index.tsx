@@ -10,13 +10,13 @@ export default function Header() {
   const { activeSection, setActiveSection, setTimeOfLastClick } =
     useActiveSection();
   return (
-    <header className="relative z-[999]">
+    <header className="relative z-[999] hidden sm:block">
       <div
-        className="pointer-events-none fixed left-1/2 top-0 h-[4.5rem] w-full -translate-x-1/2 rounded-none border border-white/40 bg-white/30 shadow-[0_8px_30px_rgba(31,41,55,0.12)] backdrop-blur-md dark:border-white/20 dark:bg-white/10 sm:top-6 sm:h-[3.25rem] sm:w-[41rem] sm:rounded-full"
+        className="pointer-events-none fixed left-1/2 top-0 h-[5.5rem] w-full -translate-x-1/2 rounded-none border border-white/40 bg-white/30 shadow-[0_8px_30px_rgba(31,41,55,0.12)] backdrop-blur-md dark:border-white/20 dark:bg-white/10 sm:top-6 sm:h-[3.25rem] sm:w-[48rem] sm:rounded-full"
         aria-hidden="true"
       ></div>
-      <nav className="fixed left-1/2 top-0 z-[1000] flex h-[4.5rem] -translate-x-1/2 items-center justify-center sm:top-6 sm:h-[3.25rem]">
-        <ul className="flex h-full w-[22rem] flex-wrap items-center justify-center gap-y-1 text-[0.9rem] font-medium text-gray-600 dark:text-gray-200 sm:w-[initial] sm:flex-nowrap sm:gap-5">
+      <nav className="fixed left-1/2 top-0 z-[1000] flex h-[5.5rem] -translate-x-1/2 items-center justify-center sm:top-6 sm:h-[3.25rem]">
+        <ul className="flex h-full w-[22rem] flex-wrap items-center justify-center gap-y-1 text-[0.8rem] font-medium text-gray-600 dark:text-gray-200 sm:w-[initial] sm:flex-nowrap sm:gap-5">
           {links.map((link) => (
             <li
               key={link.hash}

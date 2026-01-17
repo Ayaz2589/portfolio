@@ -28,7 +28,7 @@ export default function Contact() {
         once: true,
       }}
     >
-      <GlassCard className="w-full max-w-[33rem] p-8 sm:p-12">
+      <GlassCard className="w-full max-w-[33rem] p-6 sm:p-12">
         <SectionHeading>Contact me</SectionHeading>
 
         <p className="text-gray-700 -mt-6 dark:text-white/80">
