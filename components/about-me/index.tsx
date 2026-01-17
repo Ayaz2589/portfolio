@@ -1,43 +1,101 @@
 "use client";
 
-import React from "react";
+import React, { useRef } from "react";
 import { SectionHeading } from "@/components";
-import { motion } from "framer-motion";
 import { useSectionInView } from "@/hooks";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 export default function AboutMe() {
-  const { ref } = useSectionInView({ sectionName: "About", threshold: 0.75 });
+  const { ref: sectionRef } = useSectionInView({
+    sectionName: "About",
+    threshold: 0.5,
+  });
+
+  const divRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: divRef,
+    offset: ["start start", "end start"],
+  });
+
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+  const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 0.6]);
+
+  const text =
+    "After graduating with a degree in Management Information Systems and taking web development courses at university, I decided to pursue my passion for programming and focus on full-stack web development. My favorite part of programming is the problem-solving aspect - I love the feeling of finally figuring out a solution to a challenging problem. My core stack includes React, Next.js, Node.js, and TypeScript. During my tenure as a programmer, I've had the opportunity to work on both large distributed teams and smaller startup teams. My experience includes building backend services such as large-scale identity systems, as well as developing client-side application components and user flows.";
+
+  const words = text.split(" ");
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.05,
+      },
+    },
+  };
+
+  const wordVariants = {
+    hidden: {
+      opacity: 0,
+      x: -20,
+    },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        type: "spring",
+        damping: 20,
+        stiffness: 100,
+      },
+    },
+  };
 
   return (
-    <motion.section
-      ref={ref}
-      className="mb-28 max-w-[45rem] text-center leading-8 sm:leading-10 sm:mb-40 p-5 scroll-mt-28 sm:bg-gray-100/60 sm:rounded-2xl sm:shadow-sm"
-      initial={{ opacity: 0, y: 100 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.175 }}
+    <section
+      ref={(node) => {
+        if (node) {
+          // @ts-ignore
+          sectionRef(node);
+          // @ts-ignore
+          divRef.current = node;
+        }
+      }}
       id="about"
+      className="flex h-screen w-full items-center justify-center px-4 scroll-mt-28"
     >
-      <SectionHeading>About me</SectionHeading>
-      <p className="mb-3">
-        After graduating with a degree in{" "}
-        <span className="font-medium">Management Information Systems</span> and taking web development courses at university, I
-        decided to pursue my passion for programming and learned{" "}
-        <span className="font-medium">full-stack web development</span>.{" "}
-        <span className="italic">My favorite part of programming</span> is the
-        problem-solving aspect. I <span className="underline">love</span> the
-        feeling of finally figuring out a solution to a problem. My core stack
-        is{" "}
-        <span className="font-medium">
-          React, Next.js, Node.js, and Typescript
-        </span>
-      </p>
-      <p>
-        During my tenture as a programmer I had the oportunity to work on large{" "}
-        <span className="font-medium">distributed teams</span> as well as{" "}
-        <span className="font-medium">smaller startup teams</span>. My work
-        includes building backend services such as large idenity services as
-        well as client side application components and flows.
-      </p>
-    </motion.section>
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+        style={{ y, opacity, scale }}
+        className="w-full max-w-[60rem] text-center"
+      >
+        <motion.div
+          variants={{
+            hidden: { opacity: 0, y: 30 },
+            visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+          }}
+        >
+          <SectionHeading>About me</SectionHeading>
+        </motion.div>
+
+        <motion.div
+          variants={containerVariants}
+          className="flex flex-wrap justify-center text-lg leading-snug text-gray-50 md:text-2xl md:leading-relaxed"
+        >
+          {words.map((word, index) => (
+            <motion.span
+              variants={wordVariants}
+              key={index}
+              className="mr-1 mb-1 inline-block md:mr-2 md:mb-2"
+            >
+              {word}
+            </motion.span>
+          ))}
+        </motion.div>
+      </motion.div>
+    </section>
   );
 }

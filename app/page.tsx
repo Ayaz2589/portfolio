@@ -1,25 +1,22 @@
 import {
   Intro,
-  SectionDivder,
+  SectionDivider,
   AboutMe,
-  Projects,
   Skills,
+  UserExperience,
   Experience,
   Contact,
   Footer,
-  UserExperience
 } from "@/components";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between pt-24 md:p-24 backdrop-blur-md">
+    <main className="flex w-full flex-col items-center">
       <Intro />
-      <SectionDivder />
       <AboutMe />
-      <Projects />
       <Skills />
-      <Experience />
       <UserExperience />
+      <Experience />
       <Contact />
       <Footer />
     </main>

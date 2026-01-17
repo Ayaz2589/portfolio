@@ -1,97 +1,113 @@
 "use client";
 
-import React from "react";
+import React, { useRef } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
-import Link from "next/link";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { BsArrowRight, BsLinkedin } from "react-icons/bs";
 import { HiDownload } from "react-icons/hi";
 import { FaGithubSquare } from "react-icons/fa";
 import { useSectionInView, useActiveSection } from "@/hooks";
+import { GlassButton, RoundGlassButton } from "@/components";
 
 export default function Intro() {
   const { setActiveSection, setTimeOfLastClick } = useActiveSection();
-  const { ref } = useSectionInView({ sectionName: "Home" });
+  const { ref: sectionRef } = useSectionInView({ sectionName: "Home" });
+
+  const divRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: divRef,
+    offset: ["start start", "end start"],
+  });
+
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+  const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 0.6]);
 
   return (
     <section
-      ref={ref}
-      className="mb-28 max-w-[50rem] text-center sm:mb-0 scroll-mt-28"
+      ref={(node) => {
+        if (node) {
+          // @ts-ignore
+          sectionRef(node);
+          // @ts-ignore
+          divRef.current = node;
+        }
+      }}
+      className="relative flex h-screen w-full items-center justify-center text-center"
       id="home"
     >
-      <div className="flex items-center justify-center flex-col">
-        <motion.div
-          initial={{ opacity: 0, scale: 0 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{
-            type: "tween",
-            duration: 0.2,
-          }}
-          className="my-10"
-        >
+      <motion.div
+        style={{ y, opacity, scale }}
+        className="w-full max-w-[50rem] px-4"
+      >
+        <div className="flex flex-col items-center">
           <Image
             src="/picture.png"
             alt="Ayaz's profile picture"
             height={192}
             width={192}
             priority={true}
-            className="h-24 w-24 rounded-full object-cover border-[0.25rem] border-white shadow-xl"
+            className="h-24 w-24 rounded-full border-[0.25rem] border-white object-cover shadow-xl"
           />
-        </motion.div>
+          <h1 className="mb-8 mt-6 text-2xl font-medium !leading-[1.5] sm:text-4xl">
+            <span className="font-bold">Hello, I'm Ayaz.</span> I'm a{" "}
+            <span className="font-bold">software engineer</span> with{" "}
+            <span className="font-bold">10 years</span> of experience. I enjoy
+            building <span className="italic">sites & apps</span>. My focus is{" "}
+            <span className="underline">React</span>.
+          </h1>
+        </div>
+        <div className="flex flex-col items-center justify-center gap-3 text-lg font-medium sm:flex-row">
+          <GlassButton
+            as="a"
+            href="#contact"
+            onClick={(event) => {
+              event.preventDefault();
+              setActiveSection("Contact");
+              setTimeOfLastClick(Date.now());
+              const target = document.querySelector("#contact");
+              if (target) {
+                const elementRect = target.getBoundingClientRect();
+                const absoluteElementTop =
+                  elementRect.top + window.pageYOffset;
+                const middle =
+                  absoluteElementTop -
+                  window.innerHeight / 2 +
+                  elementRect.height / 2;
 
-        <motion.h1
-          className="mb-10 mt-4 px-4 text-2xl font-medium !leading-[1.5] sm:text-4xl"
-          initial={{ opacity: 0, y: 100 }}
-          animate={{ opacity: 1, y: 0 }}
-        >
-          <span className="font-bold">Hello, I'm Ayaz.</span> I'm a{" "}
-          <span className="font-bold">Software Engineer</span> with{" "}
-          <span className="font-bold">9+ years</span> of experience. I enjoy
-          building <span className="italic">sites & apps</span>. My focus is{" "}
-          <span className="underline">React</span>.
-        </motion.h1>
-      </div>
-      <motion.div
-        className="flex flex-col sm:flex-row items-center justify-center gap-3 px-4 text-lg font-medium"
-        initial={{ opacity: 0, y: 100 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{
-          deplay: 0.1,
-        }}
-      >
-        <Link
-          href="#contact"
-          className="group bg-gray-900 text-white px-7 py-3 flex items-center gap-2 rounded-full outline-none focus:scale-105 hover:scale-105 hover:bg-gray-950 active:scale-105 transition"
-          onClick={() => {
-            setActiveSection("Contact");
-            setTimeOfLastClick(Date.now());
-          }}
-        >
-          Contact me here{" "}
-          <BsArrowRight className="opacity-60 group-hover:translate-x-1 transition" />
-        </Link>
-        <a
-          className="group bg-white px-7 py-3 flex items-center gap-2 rounded-full outline-none focus:scale-105 hover:scale-105 active:scale-105 transition cursor-pointer border border-black/10"
-          href="/ayaz_resume_full_2024.pdf"
-          download
-        >
-          Download CV{" "}
-          <HiDownload className="opacity-60 group-hover:translate-y-1 transition" />
-        </a>
-        <a
-          className="bg-white p-4 text-gray-700 hover:text-gray-950 flex items-center gap-2 rounded-full outline-none focus:scale-105 hover:scale-[1.15] active:scale-105 transition cursor-pointer border border-black/10"
-          href="https://www.linkedin.com/in/ayaz2589/"
-          target="_blank"
-        >
-          <BsLinkedin />
-        </a>
-        <a
-          className="bg-white p-4 text-gray-700 hover:text-gray-950 flex items-center gap-2 rounded-full text-[1.35rem] outline-none focus:scale-105 hover:scale-[1.15] active:scale-105 transition cursor-pointer border border-black/10"
-          href="https://github.com/Ayaz2589"
-          target="_blank"
-        >
-          <FaGithubSquare />
-        </a>
+                window.scrollTo({
+                  top: middle + 50,
+                  behavior: "smooth",
+                });
+              }
+            }}
+          >
+            Contact me here{" "}
+            <BsArrowRight className="opacity-60 transition group-hover:translate-x-1" />
+          </GlassButton>
+          <GlassButton as="a" href="/ayaz_resume_full_2024.pdf" download>
+            Download CV{" "}
+            <HiDownload className="opacity-60 transition group-hover:translate-y-1" />
+          </GlassButton>
+          <RoundGlassButton
+            as="a"
+            href="https://www.linkedin.com/in/ayaz2589/"
+            target="_blank"
+            className="text-gray-700 hover:text-gray-950"
+            aria-label="LinkedIn"
+          >
+            <BsLinkedin />
+          </RoundGlassButton>
+          <RoundGlassButton
+            as="a"
+            href="https://github.com/Ayaz2589"
+            target="_blank"
+            className="text-[1.35rem] text-gray-700 hover:text-gray-950"
+            aria-label="GitHub"
+          >
+            <FaGithubSquare />
+          </RoundGlassButton>
+        </div>
       </motion.div>
     </section>
   );

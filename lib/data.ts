@@ -1,9 +1,6 @@
 import React from "react";
 import { CgWorkAlt } from "react-icons/cg";
 import { LuGraduationCap } from "react-icons/lu";
-import corpcommentImg from "@/public/corpcomment.png";
-import rmtdevImg from "@/public/rmtdev.png";
-import wordanalyticsImg from "@/public/wordanalytics.png";
 
 export const links = [
   {
@@ -15,20 +12,16 @@ export const links = [
     hash: "#about",
   },
   {
-    name: "Projects",
-    hash: "#projects",
-  },
-  {
     name: "Skills",
     hash: "#skills",
   },
   {
-    name: "Experience",
-    hash: "#experience",
-  },
-  {
     name: "UX/UI",
     hash: "#uxui",
+  },
+  {
+    name: "Experience",
+    hash: "#experience",
   },
   {
     name: "Contact",
@@ -47,7 +40,7 @@ export const experiencesData = [
     date: "Gratuated May 2014 B.S. in Management Information Systems",
   },
   {
-    title: "Jr. Frontend Web Developer",
+    title: "Jr. Web Developer",
     company: "Greensbury Market",
     location: "New York, NY",
     description:
@@ -56,7 +49,7 @@ export const experiencesData = [
     date: "June 2016 - March 2017",
   },
   {
-    title: "Frontend Web Developer",
+    title: "Web Developer",
     company: "The Bacon",
     location: "New York, NY",
     description:
@@ -65,7 +58,7 @@ export const experiencesData = [
     date: "April 2017 - October 2018",
   },
   {
-    title: "Frontend Software Engineer",
+    title: "Software Engineer",
     company: "Goldman Sachs",
     location: "New York, NY",
     description:
@@ -74,7 +67,7 @@ export const experiencesData = [
     date: "November 2018 - October 2020",
   },
   {
-    title: "Fullstack Software Engineer",
+    title: "Software Engineer",
     company: "K Health",
     location: "New York, NY",
     description:
@@ -92,45 +85,16 @@ export const experiencesData = [
     date: "May 2023",
   },
   {
-    title: "Senior Frontend Engineer",
-    company: "Cross Terra",
+    title: "Senior Software Engineer",
+    company: "Crossterra",
     location: "New York, NY",
     description:
-      "Developed a React-based questionnaire service to match users effectively with suitable physicians. PDevelop e-commerce storefronts and an admin dashboard with Next.js for brands entering the Asian market, collaborating with backend engineers, Product Manager, and Designer for optimal user experience and functionality.",
+      "Own the frontend architecture and development of multi-tenant applications, spanning consumer storefronts and internal admin dashboards.",
     icon: React.createElement(CgWorkAlt),
-    date: "March 2024 - Current",
+    date: "February 2024 - Current",
   },
 ] as const;
 
-export const projectsData = [
-  {
-    title: "The Dashboard",
-    description:
-      "The Dashboard showcases React and TypeScript's capabilities in a clean and maintainable codebase for a responsive and interactive user interface.",
-    tags: ["React", "Material UI", "ReCharts", "AG-Grid", "JWT Auth", "Axios"],
-    imageUrl: corpcommentImg,
-    repository: "https://github.com/Ayaz2589/streaming-subscription-dashboard",
-    link: "https://streaming-subscription-dashboard.vercel.app/dashboard",
-  },
-  {
-    title: "Node Services",
-    description:
-      "The NodeJS backend powers 'The Dashboard' web app's authentication and data fetching, using MongoDB Atlas for user data storage.",
-    tags: ["Node", "Express", "Bcrpyt", "JWT", "Mongo DB", "Mongoose"],
-    imageUrl: rmtdevImg,
-    repository: "https://github.com/Ayaz2589/app-backend-api",
-    link: "app-backend-api-jet.vercel.app",
-  },
-  {
-    title: "Portfolio",
-    description:
-      "User Portfolio that allows users to learn about my skills and experience, As well as contact me.",
-    tags: ["React", "Next.js", "SQL", "Tailwind", "Framer"],
-    imageUrl: wordanalyticsImg,
-    repository: "https://github.com/Ayaz2589/portfolio",
-    link: "https://portfolio-ayaz2589.vercel.app/",
-  },
-] as const;
 
 export const skills = [
   "HTML/CSS",

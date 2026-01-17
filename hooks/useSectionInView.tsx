@@ -1,7 +1,5 @@
 "use client";
 
-import { useEffect } from "react";
-import { useActiveSection } from "@/hooks";
 import { useInView } from "react-intersection-observer";
 import { ActiveSectionType } from "@/context";
 
@@ -11,19 +9,11 @@ type Props = {
 };
 
 export default function useSectionInView({
-  sectionName,
+  sectionName: _sectionName,
   threshold = 0.5,
 }: Props) {
-  const { ref, inView } = useInView({
+  const { ref } = useInView({
     threshold,
   });
-
-  const { setActiveSection, timeOfLastClick } = useActiveSection();
-
-  useEffect(() => {
-    if (inView && Date.now() - timeOfLastClick > 1000) {
-      setActiveSection(sectionName);
-    }
-  }, [inView, setActiveSection, timeOfLastClick, sectionName]);
   return { ref };
 }
