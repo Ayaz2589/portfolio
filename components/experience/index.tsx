@@ -21,7 +21,7 @@ export default function Experience() {
     <section
       ref={ref}
       id="experience"
-      className="flex min-h-screen w-full scroll-mt-28 flex-col items-center justify-center py-24 text-center sm:py-32"
+      className="flex min-h-screen w-full scroll-mt-28 flex-col items-center justify-start py-20 text-center sm:justify-center sm:py-32"
     >
       <motion.div
         initial={{ opacity: 0, y: 50 }}

@@ -38,25 +38,21 @@ export default function Header() {
                   const target = document.querySelector(link.hash);
                   if (!target) return;
 
-                  if (link.name === "Experience") {
-                    target.scrollIntoView({
-                      behavior: "smooth",
-                      block: "start",
-                    });
-                  } else {
-                    const elementRect = target.getBoundingClientRect();
-                    const absoluteElementTop =
-                      elementRect.top + window.pageYOffset;
-                    const middle =
-                      absoluteElementTop -
-                      window.innerHeight / 2 +
-                      elementRect.height / 2;
+                  const elementRect = target.getBoundingClientRect();
+                  const absoluteElementTop =
+                    elementRect.top + window.pageYOffset;
+                  const middle =
+                    absoluteElementTop -
+                    window.innerHeight / 2 +
+                    elementRect.height / 2;
 
-                    window.scrollTo({
-                      top: middle + 50,
-                      behavior: "smooth",
-                    });
-                  }
+                  window.scrollTo({
+                    top:
+                      link.name === "Experience"
+                        ? absoluteElementTop + 20
+                        : middle + 50,
+                    behavior: "smooth",
+                  });
                 }}
               >
                 {link.name}
